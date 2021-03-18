@@ -1,0 +1,66 @@
+* {
+    outline: none;
+}
+
+.auth-page{
+    min-height: 80vh;
+}
+
+.navbar {
+    margin-bottom: 150px;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+}
+
+.main {
+    padding-top: 150px;
+}
+
+input {
+    padding-left: 20px !important;
+}
+
+.search_form {
+    width: 600px;
+    display: flex;
+    margin-left: 100px;
+}
+
+
+.logo {
+    vertical-align: middle;
+}
+
+.logo img {
+    width: 30px;
+}
+
+.logo h1 {
+    margin: 5px 20px;
+}
+
+.mini-nav {
+    z-index: 10;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mini-nav ul {
+
+    z-index: 10;
+    min-width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.mini-nav ul li {
+    z-index: 10;
+    display: inline;
+    padding: 0 40px;
+}
+
+img{
+    z-index: 1;
+}
