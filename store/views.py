@@ -1,16 +1,19 @@
 from django.shortcuts import render
 
+from store.models import Product
 
 def home_view(request):
     context = {
-        'title': 'Home'
+        'title': 'Home',
+        'products': Product.objects.all().order_by('-timestamp')[0:4]
     }
     return render(request, 'store/home.html', context)
 
 
 def store_view(request):
     context = {
-        'title': 'Store'
+        'title': 'Store',
+        'products': Product.objects.all()
     }
     return render(request, 'store/store.html', context)
 
@@ -30,8 +33,15 @@ def checkout_view(request):
 
 
 def product_view(request, slug):
+    product = ""
+    try:
+        product = Product.objects.get(slug=slug)
+    except: 
+        product = 'NULL'
+
     context = {
-        'title': 'Product'
+        'title': 'Product',
+        'product': product
     }
     return render(request, 'store/product.html', context)
 

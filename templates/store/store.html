@@ -1,8 +1,30 @@
 {% extends "base/base.html" %}
 {% block content %}
-<section class="text-gray-600 body-font">
-	<div class="container mx-auto flex px-5 py-15 md:flex-row flex-col items-center">
 
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+            {% for product in products %}
+                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                    <a class="block h-48 rounded overflow-hidden" >
+                        <img alt="ecommerce" class="thumbnail object-cover object-center w-full h-full"
+                             src="{{ product.thumbnail.url }}">
+                    </a>
+                    <div class="pt-4 py-4 px-6">
+                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ product.brand }}</h3>
+                        <h2 class="text-gray-900 title-font text-lg font-medium">{{ product.name }}</h2>
+                        <p class="mt-1">Rs. {{ product.price }}</p>
+                        <a href="/store/{{ product.slug }}" class="text-indigo-500 inline-flex items-center mt-4">View Product
+                            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 {% endblock %}

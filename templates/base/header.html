@@ -3,7 +3,7 @@
     <div class="container mx-auto">
         <header class="md:flex md:items-center md:justify-between p-4 header pb-0 md:pb-4">
             <div class="flex items-center justify-between mb-4 md:mb-0">
-                <a class="no-underline text-grey-darkest hover:text-black flex logo" href="{% url 'store' %}">
+                <a class="no-underline text-grey-darkest hover:text-black flex logo" href="{% url 'home' %}">
                     <img src="{% static 'img/logo.svg' %}" alt="">
                     <h1 class="leading-none text-2xl text-grey-darkest font-bold">
                         PenStore
@@ -31,16 +31,6 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="md:ml-10">
-                        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0"
-                           href="{% url 'signin' %}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                 class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                            </svg>
-                        </a>
-                    </li>
 
                     <li class="md:ml-10">
                         <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0"
@@ -52,18 +42,46 @@
                             </svg>
                         </a>
                     </li>
-
+                    <li class="md:ml-10">
+                        {% if request.user.is_authenticated %}
+                            <div class="dropdown">
+                                <button class="border-none outline-none flex" onclick="dropdown()">
+                                    Welcome, {{ request.user.first_name }}
+                                    <svg class="w-4 h-4 ml-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <div><a href="#">Past Orders</a></div>
+                                    <div><a href="#">Profile</a></div>
+                                    {% if request.user.is_superuser %}
+                                        <div><a href="{% url 'dashboard' %}">Dashboard</a></div>
+                                    {% endif %}
+                                    <div><a href="{% url 'logout' %}" class="text-red-500">Logout</a></div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0"
+                               href="{% url 'signin' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                     class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                            </a>
+                        {% endif %}
+                    </li>
                 </ul>
             </nav>
         </header>
     </div>
     <div class="mini-nav">
         <ul class="text-indigo-700 font-medium bg-indigo-100">
+            <li><a href="{% url 'store' %}">Visit Store</a></li>
             <li>New Arrivals</li>
             <li>Fountain Pens</li>
             <li>Notebooks</li>
             <li>Shop By Brand</li>
-            <li>Others</li>
         </ul>
     </div>
 </div>

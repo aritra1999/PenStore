@@ -1,5 +1,9 @@
-* {
+*, *:focus, *:active, button:focus, button:active {
     outline: none;
+}
+
+img, .thumbnail{
+    z-index: -10 !important;
 }
 
 .auth-page{
@@ -41,26 +45,43 @@ input {
 }
 
 .mini-nav {
-    z-index: 10;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
 
 .mini-nav ul {
-
-    z-index: 10;
     min-width: 100%;
     text-align: center;
     padding: 10px 0;
 }
 
 .mini-nav ul li {
-    z-index: 10;
     display: inline;
     padding: 0 40px;
 }
 
-img{
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 4px 5px 16px 0px rgb(0 0 0 / 9%);
+    border-radius: 6px;
+    padding: 10px 20px;
     z-index: 1;
 }
+
+.dropdown-content div{
+    margin: 10px 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+

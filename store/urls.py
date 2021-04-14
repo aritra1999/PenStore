@@ -10,9 +10,9 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', home_view, name='store'),
+    path('', home_view, name='home'),
     path('store', store_view, name='store'),
-    path('product/<slug>', product_view, name='product'),
+    path('store/<slug>', product_view, name='product'),
     path('cart', cart_view, name='cart'),
     path('checkout', checkout_view, name='checkout'),
 ]
